@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TapGame Main Page</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- Шапка сайта -->
+    <header class="header">
+      <nav class="nav">
+        <div class="nav__logo">TAPGAME</div>
+        <button class="nav__burger" aria-label="Открыть меню">
+          <!-- Иконка бургера или SVG -->
+          ☰
+        </button>
+        <ul class="nav__menu">
+          <li><a href="#">Турниры</a></li>
+          <li><a href="#">Спорт</a></li>
+          <li><a href="#">О нас</a></li>
+          <li><a href="#">Проекты</a></li>
+        </ul>
+        <div class="nav__auth">
+          <button class="btn">Войти</button>
+          <button class="btn btn--primary">Регистрация</button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Основное содержимое -->
+    <main>
+      <!-- Хиро-блок (зелёный фон) -->
+      <section class="hero">
+        <div class="hero__content">
+          <h1 class="hero__title">Все о популярности спорта</h1>
+          <p class="hero__subtitle">
+            Tap Game делает спорт прозрачным и помогает спонсорам, организаторам и зрителям узнать
+            всё о популярности любого спортивного события
+          </p>
+          <div class="hero__sports">
+            <button class="sports-btn active">Баскетбол</button>
+            <button class="sports-btn">Волейбол</button>
+            <button class="sports-btn">Футбол</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Блок «Турниры» -->
+      <section class="tournaments">
+        <h2 class="section-title">Турниры</h2>
+
+        <!-- Карточка турнира -->
+        <article class="tournament-card">
+          <img
+            class="tournament-card__img"
+            src="https://via.placeholder.com/400x200"
+            alt="Basketball tournament"
+          />
+          <div class="tournament-card__info">
+            <h3 class="tournament-card__title">3x3 Basket 2024/2025</h3>
+            <p class="tournament-card__desc">
+              Присоединяйтесь к главному баскетбольному турниру года! Динамичный драйв с громкими
+              эмоциями…
+            </p>
+            <button class="btn btn--primary">Участвовать</button>
+            <div class="tournament-card__links">
+              <a href="#" aria-label="Подробнее в соцсети Instagram">IG</a>
+              <a href="#" aria-label="Подробнее в соцсети Facebook">FB</a>
+              <a href="#" aria-label="Подробнее на сайте">WEB</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ещё карточки... -->
+      </section>
+
+      <!-- Ближайшие турниры -->
+      <section class="upcoming-tournaments">
+        <h2 class="section-title">Ближайшие турниры</h2>
+        <ul class="upcoming-tournaments__list">
+          <li>3x3 Basket 2024/2025 (15 янв – 21 фев 2025 года)</li>
+          <li>Cityball 2024/2025 (15 янв – 21 фев 2025 года)</li>
+        </ul>
+      </section>
+
+      <!-- Блок «Новости» -->
+      <section class="news">
+        <h2 class="section-title">Новости</h2>
+        <div class="news__grid">
+          <article class="news-card">
+            <img
+              class="news-card__img"
+              src="https://via.placeholder.com/400x200"
+              alt="Basketball news"
+            />
+            <h3 class="news-card__title">
+              Большая игра: Баскетбольный турнир года стартует уже в эти выходные!
+            </h3>
+            <p class="news-card__date">15 янв 2025</p>
+          </article>
+
+          <article class="news-card">
+            <img
+              class="news-card__img"
+              src="https://via.placeholder.com/400x200"
+              alt="Basketball news"
+            />
+            <h3 class="news-card__title">Битва титанов: Новый формат финала</h3>
+            <p class="news-card__date">15 янв 2025</p>
+          </article>
+
+          <!-- Ещё новости... -->
+        </div>
+      </section>
+    </main>
+
+    <!-- Подвал сайта -->
+    <footer class="footer">
+      <div class="footer__download">
+        <p>Скачай TAPGAME – играй и побеждай без ограничений!</p>
+        <div class="footer__stores">
+          <a href="#" class="store-badge">AppStore</a>
+          <a href="#" class="store-badge">GooglePlay</a>
+        </div>
+      </div>
+      <div class="footer__contacts">
+        <p>
+          По любым вопросам обращайтесь на наш email:
+          <a href="mailto:mailbox@tapgame.kz">mailbox@tapgame.kz</a>
+        </p>
+      </div>
+      <div class="footer__copyright">&copy; 2024 TAPGAME. BIN 19124001379</div>
+    </footer>
+  </body>
+</html>

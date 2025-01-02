@@ -1,0 +1,170 @@
+.container {
+  max-width: 1326px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.wrapper {
+  width: 100%;
+  background-color: #0e0d12;
+}
+
+.container_main {
+  margin: 0 auto;
+  max-width: 1033px;
+  width: 100%;
+}
+
+.hero {
+  padding-top: 18px;
+  border-bottom: 1px solid #202026;
+  border-top: 1px solid #202026;
+  padding-bottom: 30px;
+  margin-bottom: 40px;
+}
+
+.hero__title {
+  font-size: 23px;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 25px;
+  padding-bottom: 15px;
+}
+
+.hero__text {
+  font-size: 12.5px;
+  color: #fff;
+  max-width: 572px;
+  text-align: center;
+}
+
+.hero__content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.hero__uppertext {
+  font-size: 10px;
+  color: #9f9ea8;
+}
+
+.form-container {
+  max-width: 700px; /* ограничиваем ширину контейнера */
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: sans-serif;
+  color: #fff; /* текст на тёмном фоне (как в макете) */
+  background-color: #202026; /* общий тёмный фон */
+  border-radius: 8px;
+}
+
+.form-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-description {
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+  color: #ccc;
+}
+
+.form-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+}
+
+/* На мобильных делаем 1 колонку */
+@media (max-width: 600px) {
+  .form-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Общий стиль групп полей */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Для поля загрузки фото делаем в ширину на всю строку */
+.file-input {
+  grid-column: span 2;
+}
+
+/* Стили лейблов */
+.photo-label,
+.form-group label {
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #eee;
+  margin-bottom: 9px;
+}
+
+/* Звёздочка для обязательных полей */
+.required {
+  color: #ff6868;
+  margin-left: 4px;
+}
+
+/* Инпуты и селекты */
+.form-group input,
+.form-group select {
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background-color: #202026;
+  color: #eee;
+}
+
+.form-group input::placeholder,
+.form-group select {
+  color: #999;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #4cab51; /* цвет акцента при фокусе */
+  outline: none;
+}
+
+/* Кнопка отправки */
+.submit-button {
+  grid-column: 1 / -1; /* или grid-column: span 2; если у вас 2 колонки */
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  background-color: #97f963;
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.submit-button:hover {
+  background-color: #3a9941;
+}
+
+.photo-download {
+  width: 52px;
+  height: 52px;
+  background-color: #333339;
+  border-radius: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo-input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  width: min-content;
+}

@@ -1,0 +1,261 @@
+/* Сброс/бокс-модель */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Общие стили */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #333;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---------- HEADER / NAV ---------- */
+.header {
+  background-color: #111;
+  color: #fff;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: relative; /* нужно для позиционирования выпадающего меню */
+}
+
+.nav__logo {
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+
+/* Кнопка-иконка для мобильного меню */
+.nav__burger {
+  display: none; /* скроем на десктопе */
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.nav__menu {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin-left: 2rem;
+}
+
+.nav__menu li a {
+  text-decoration: none;
+  color: #fff;
+  padding: 0.5rem;
+  transition: background 0.3s;
+}
+.nav__menu li a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav__auth {
+  margin-left: auto;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+.btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.btn--primary {
+  background: #fff;
+  color: #111;
+}
+
+/* ---------- HERO ---------- */
+.hero {
+  background: linear-gradient(135deg, #18c964 0%, #24d476 100%);
+  color: #fff;
+  padding: 2rem;
+  text-align: center;
+}
+.hero__title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.hero__subtitle {
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+}
+.hero__sports {
+  display: inline-flex;
+  gap: 1rem;
+}
+.sports-btn {
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+.sports-btn.active,
+.sports-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ---------- TOURNAMENTS ---------- */
+.section-title {
+  font-size: 1.6rem;
+  margin: 2rem 0 1.5rem 0;
+  text-align: center;
+}
+
+.tournaments {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.tournament-card {
+  background: #f5f5f5;
+  border-radius: 8px;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.tournament-card__img {
+  flex: 0 0 300px; /* Ширина картинки на десктопе */
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.tournament-card__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tournament-card__title {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.tournament-card__desc {
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.tournament-card__links a {
+  margin-right: 0.5rem;
+  color: #111;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ---------- UPCOMING TOURNAMENTS ---------- */
+.upcoming-tournaments {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.upcoming-tournaments__list {
+  list-style: disc inside;
+  margin-top: 1rem;
+}
+
+/* ---------- NEWS ---------- */
+.news {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+.news__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.news-card {
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 1rem;
+}
+.news-card__title {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.news-card__date {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* ---------- FOOTER ---------- */
+.footer {
+  background: #111;
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.footer__download p {
+  margin-bottom: 0.5rem;
+}
+.footer__stores {
+  display: inline-flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.store-badge {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  background: #333;
+  border-radius: 4px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer__contacts {
+  margin-bottom: 1rem;
+}
+.footer__contacts a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* ---------- АДАПТИВ (Mobile) ---------- */
+@media (max-width: 768px) {
+  /* Превращаем десктоп-меню в мобильное */
+  .nav__burger {
+    display: block;
+  }
+  .nav__menu,
+  .nav__auth {
+    display: none; /* скрываем на мобильном, пока не откроем бургер */
+  }
+
+  .tournament-card {
+    flex-direction: column;
+  }
+  .tournament-card__img {
+    flex: none;
+    width: 100%;
+  }
+
+  .news__grid {
+    grid-template-columns: 1fr; /* одна колонка на мобильном */
+  }
+}

@@ -1,0 +1,464 @@
+.container {
+  max-width: 1326px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.wrapper {
+  width: 100%;
+  background-color: #0e0d12;
+}
+
+.container_main {
+  margin: 0 auto;
+  max-width: 1033px;
+  width: 100%;
+}
+.main {
+  display: flex;
+}
+
+.hero {
+  height: 300px;
+  background-image: url("/img/bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.hero__title {
+  font-size: 23px;
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.hero__text {
+  max-width: 479px;
+  font-size: 12.5px;
+  color: #fff;
+}
+
+.hero__sports {
+  display: flex;
+  padding-top: 30px;
+  border-bottom: 1px solid #202026;
+  margin-bottom: 20px;
+}
+
+.sports_btn img {
+  object-fit: contain;
+  max-width: none;
+  max-height: none;
+  width: 28px;
+  height: 28px;
+  margin-right: 12px;
+}
+
+.sports_btn {
+  display: flex;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  align-items: center;
+  padding: 13px 17px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.sports_btn:hover {
+  color: #09ba65;
+  border-bottom: 1px solid #09ba65;
+}
+
+.sports_btn_active {
+  color: #09ba65;
+  border-bottom: 1px solid #09ba65;
+}
+
+.tournament {
+  border-radius: 8px;
+  margin-bottom: 2rem; /* Отделим этот блок от других */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* -- Баннер + инфо -- */
+
+.tournament_wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem; /* Расстояние между изображением и текстом */
+}
+
+/* Изображение баннера адаптивное */
+.tournament__img {
+  width: 100%;
+  max-width: 233px; /* Примерная ширина — меняйте под себя */
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  object-fit: cover; /* Если используете фиксированные пропорции для img */
+}
+
+/* Контейнер с заголовком, описанием, кнопкой */
+.tournament__info {
+  flex: 1; /* Занимает всё оставшееся пространство в ряду */
+  padding: 18px;
+}
+
+/* Заголовок */
+.tournament__title {
+  font-size: 14.58px;
+  font-weight: 400;
+
+  color: #fff;
+  margin-left: 12px;
+}
+
+/* Текст-описание */
+.tournament__description {
+  font-size: 10.42px;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  color: #9f9ea8;
+  max-width: 426px;
+  margin-top: 19px;
+  margin-bottom: 19px;
+}
+
+/* Кнопка */
+.tournament__button {
+  display: inline-block;
+  background-color: #ff6600;
+  color: #fff;
+  font-size: clamp(14px, 1.5vw, 16px);
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.tournament__button:hover {
+  background-color: #e85c00;
+}
+
+/* ------------------------------------- */
+/* 3. Блок с иконками / соцсетями        */
+/* ------------------------------------- */
+
+.tournament__links {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+/* Ссылка-иконка */
+.tournament__icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Иконка */
+.tournament__icon {
+  width: 24px; /* Можно менять под себя или делать адаптивно через clamp */
+  height: 24px;
+  fill: #333; /* При необходимости менять цвет SVG */
+  transition: fill 0.2s ease;
+}
+
+.tournament__icon-link:hover .tournament__icon {
+  fill: #ff6600;
+}
+
+.tournament__banner {
+  background-color: #202026;
+  display: flex;
+  margin-top: 15px;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.tournament__upcoming {
+  background-color: #202026;
+  margin-top: 16px;
+  border-radius: 3px;
+  padding: 12px 0;
+}
+
+.tournament__subscribe {
+  background-color: #1a231a;
+  display: flex;
+  padding: 6px;
+  align-items: center;
+  border-radius: 3px;
+  color: #97f963;
+  font-size: 10.4px;
+}
+
+.tournament__subscribe img {
+  margin-right: 8px;
+}
+
+.tournament__title-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.news {
+  max-width: 705px;
+}
+
+.news__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.news__btn-all {
+  font-size: 10.42px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  background-color: #202026;
+  height: 15px;
+  padding: 12px 9px;
+  border-radius: 3px;
+}
+
+.news {
+  margin-top: 30px;
+}
+
+.news__items {
+  display: flex;
+  gap: 5px;
+  border-bottom: 1px solid #202026;
+  padding-bottom: 30px;
+}
+
+.news__item {
+  max-width: 188px;
+  border-radius: 3px;
+}
+
+.news__item-title {
+  font-size: 11.25px;
+  color: #fff;
+  font-weight: bold;
+  line-height: 20px;
+}
+
+.news__item-date {
+  color: #9f9ea8;
+  font-size: 10px;
+  margin-top: 10px;
+}
+
+.download__tapgame {
+  display: flex;
+  padding-top: 30px;
+  align-items: center;
+}
+
+.qr__title {
+  font-size: 12.5px;
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 18px;
+}
+.qr__info {
+  padding-left: 20px;
+}
+
+/* ------------------------------------- */
+/* 4. Ближайшие турниры                  */
+/* ------------------------------------- */
+
+.tournament__upcoming-title {
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* Список */
+.tournament__list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.tournament__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: clamp(14px, 1.5vw, 16px);
+  background-color: #1c1c20;
+  padding: 10px 7px;
+}
+
+.tournament__icon-small {
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+}
+
+.tournament__icon-small svg {
+  width: 100%;
+  height: 100%;
+  fill: #ff6600;
+}
+
+.trophy_box {
+  background-color: #202026;
+  padding: 5px;
+  width: min-content;
+  margin-right: 10px;
+  border-radius: 3px;
+}
+
+.trophy_box img {
+  width: 13px;
+  height: 13px;
+  max-width: none;
+}
+
+.tournament__icon__text {
+  font-weight: 700;
+  font-size: 12.5px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.tournament__btn {
+  height: 18px;
+  padding: 0 18px;
+  text-align: center;
+  color: #fff;
+  font-size: 11.25px;
+  width: min-content;
+  background-color: #333339;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  margin-right: 14px;
+}
+.tournament__btn-wrapper {
+  display: flex;
+}
+
+.tournament__links-wrapper {
+  display: flex;
+  border-left: 1px solid #333339;
+  padding-left: 18px;
+}
+
+.tournament__info-link {
+  width: 18px;
+  height: 18px;
+  background-color: #333339;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  margin-right: 14px;
+}
+
+.tournament__item-title {
+  color: #fff;
+  font-size: 10.42px;
+}
+.tournament__item-date {
+  font-size: 8.75px;
+  color: #9f9ea8;
+  margin-top: 6px;
+}
+
+.patners {
+  border-top: 1px solid #202026;
+  border-bottom: 1px solid #202026;
+  padding: 0 10px;
+}
+
+.patners__title {
+  color: #a9a9b4;
+  font-size: 11.25px;
+  margin-right: clamp(10px, 5%, 50px);
+}
+
+.patners__subtitle_button {
+  color: #0e0d12;
+  font-size: 11.24px;
+  font-weight: bold;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 12px;
+  padding-right: 12px;
+  border-radius: 3px;
+}
+
+/* ------------------------------------- */
+/* 5. Медиа-запросы (дополнительно)      */
+/* ------------------------------------- */
+
+/* Если хотите управлять раскладкой иначе на мобильных */
+@media (max-width: 768px) {
+  .tournament__banner {
+    flex-direction: column; /* Баннер сверху, текст снизу */
+    align-items: flex-start;
+  }
+
+  .tournament__img {
+    max-width: 100%; /* На мобильных можно растянуть на всю ширину */
+    margin-bottom: 1rem;
+  }
+}
+
+/* Пример на совсем маленьких экранах */
+@media (max-width: 480px) {
+  .tournament {
+    padding: 1rem; /* Поменьше отступов */
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .tournament_wrapper {
+    flex-wrap: wrap;
+  }
+  .tournamet_wrapper_under {
+    width: 100%;
+  }
+  .tournamet_wrapper_upcoming {
+    width: 100%;
+  }
+
+  .download__tapgame {
+    display: none;
+  }
+  .container_main {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  /* .tournament__img {
+    max-width: 113px;
+  } */
+}
