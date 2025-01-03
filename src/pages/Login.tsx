@@ -3,8 +3,8 @@ import styles from "../styles/Login.module.css";
 import { useTheme } from "../context/ThemeContext";
 
 const Login = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { theme, toggleTheme } = useTheme();
+  // const { theme, toggleTheme } = useTheme();
+  const { toggleTheme } = useTheme();
   const [phoneNumber, setPhoneNumber] = useState("");
   const [phoneNumberFocused, setPhoneNumberFocused] = useState<boolean>(false);
 
