@@ -1,8 +1,10 @@
 import { Header, Footer } from "../components";
 import styles from "../styles/Main.module.css";
+import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
 
 const Main = () => {
+  const navigate = useNavigate();
   return (
     <div className={styles.wrapper}>
       <Header />
@@ -68,7 +70,19 @@ const Main = () => {
                       страсть к игре.
                     </p>
                     <div className={styles["tournament__btn-wrapper"]}>
-                      <div className={styles["tournament__btn"]}>Участвовать</div>
+                      <div
+                        className={styles["tournament__btn"]}
+                        style={{ cursor: "pointer" }}
+                        onClick={() => {
+                          if (localStorage.getItem("token")) {
+                            navigate("apply");
+                          } else {
+                            navigate("auth");
+                          }
+                        }}
+                      >
+                        Участвовать
+                      </div>
                       <div className={styles["tournament__links-wrapper"]}>
                         <div className={styles["tournament__info-link"]}>
                           <img src="/img/info.png" alt="info" />

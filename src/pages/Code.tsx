@@ -1,85 +1,132 @@
-import { useState } from "react";
-import styles from "../styles/Login.module.css";
-import { useTheme } from "../context/ThemeContext";
-import { Watch } from "react-loader-spinner";
-import uri from "../utils/uri";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "../context/ThemeContext";
+import styles from "../styles/Code.module.css";
+import uri from "../utils/uri";
+import { Watch } from "react-loader-spinner";
 
-const Login = () => {
+const Code = () => {
   // const { theme, toggleTheme } = useTheme();
   const { toggleTheme } = useTheme();
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
+  // const [phoneNumber, setPhoneNumber] = useState("");
+  // const [phoneNumberFocused, setPhoneNumberFocused] = useState<boolean>(false);
+  const [code, setCode] = useState("");
+  const [errorCode, setCodeError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [loadingCode, setCodeLoading] = useState(false);
+  const [countdown, setCountdown] = useState(0);
 
-  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  useEffect(() => {
+    let intervalId: number | undefined;
+
+    if (countdown > 0) {
+      intervalId = window.setInterval(() => {
+        setCountdown(prevCount => prevCount - 1);
+      }, 1000);
+    }
+
+    return () => {
+      if (intervalId) window.clearInterval(intervalId);
+    };
+  }, [countdown]);
+
+  const handleCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-
-    setEmail(value);
+    if (/^\d*$/.test(value)) {
+      if (code.length <= 6) {
+        setCode(value);
+      }
+    }
   };
+
+  const formatTime = (seconds: number): string => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`;
+  };
+
   const sendEmail = async (e: React.MouseEvent<HTMLButtonElement>) => {
     try {
       e.preventDefault();
-      if (email.length) {
-        setLoading(true);
-        const response = await fetch(`${uri}/v1/register`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ email })
-        });
+      if (countdown > 0) return;
 
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.message || "Registration failed");
-        }
+      setLoading(true);
+      const response = await fetch(`${uri}/v1/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email: localStorage.getItem("email") })
+      });
 
-        const data = await response.json();
-        if (data.message === "Email was sent") {
-          localStorage.setItem("email", email);
-          navigate("/auth/code");
-        }
-
-        return data;
+      if (!response.ok) {
+        throw new Error("Failed to send email");
       }
+
+      setCountdown(60);
     } catch (error) {
       console.error("Registration error:", error);
-      // Here you might want to set an error state to show to the user
       throw error;
     } finally {
       setLoading(false);
     }
   };
 
-  // const [phoneNumber, setPhoneNumber] = useState("");
-  // const [phoneNumberFocused, setPhoneNumberFocused] = useState<boolean>(false);
-  // const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const value = e.target.value;
-  //   // Remove any non-digit characters except the first +
-  //   const digits = value.replace(/\D/g, "");
-  //   // Limit to 10 digits (after +7)
-  //   if (digits.length <= 10) {
-  //     setPhoneNumber(digits);
-  //   }
-  // };
+  const verifyCode = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    try {
+      e.preventDefault();
+      if (code.length !== 6) {
+        return;
+      }
+
+      setCodeLoading(true);
+      const response = await fetch(`${uri}/v1/auth`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email: localStorage.getItem("email"), code })
+      });
+
+      if (response.status === 400) {
+        setCodeError(true);
+        return;
+      }
+
+      const data = await response.json();
+
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Registration error:", error);
+      throw error;
+    } finally {
+      setCodeLoading(false);
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.loginContainer}>
         {/* <button className={styles.themeToggle} onClick={toggleTheme}>
           {theme === "light" ? "🌙" : "☀️"}
         </button> */}
-        <form className={styles.loginForm}>
+        <div className={styles.loginForm}>
           <div className={styles.loginHeader}>
-            <div
-              className={styles.arrowBack}
-              onClick={() => navigate("/")}
-              style={{ cursor: "pointer" }}
-            >
+            <div className={styles.arrowBack} onClick={() => navigate("/auth")}>
               <img src="/img/back.png" alt="back" />
             </div>
-            <h1 className={styles.loginH1}>Tapgame</h1>
+            <h1 style={{ opacity: "0" }} className={styles.loginH1}>
+              Tapgame
+            </h1>
           </div>
+          <p style={{ textAlign: "center", fontSize: "20.83px" }}>
+            Подтвердите с помощью кода, отправленного на ваш email
+          </p>
+          <p></p>
           <div className={styles.messengerBlock}>
             {/* <div className={styles.messengerItem}>
               <div style={{ marginRight: "8px" }}>
@@ -144,16 +191,39 @@ const Login = () => {
 
             <input
               className={styles.phoneInput}
-              type="email"
-              id="email"
-              name="email"
+              type="text"
+              id="number"
+              name="number"
               required
-              value={email}
-              onChange={handleEmailChange}
-              placeholder="На этот email придет код ..."
+              value={code}
+              onChange={handleCodeChange}
+              placeholder="Введите код"
+              maxLength={6}
+              style={errorCode ? { color: "red" } : { color: "#000" }}
             />
           </div>
-          <button type="submit" className={styles.submitButton} onClick={sendEmail}>
+          <button type="submit" className={styles.submitButton} onClick={verifyCode}>
+            {loadingCode ? (
+              <Watch
+                height={20}
+                width={20}
+                color="#fff"
+                visible={true}
+                wrapperStyle={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center"
+                }}
+              />
+            ) : (
+              "Продолжить"
+            )}
+          </button>
+          <button
+            style={{ backgroundColor: "#f5f5f8", color: "#000", marginTop: "9px" }}
+            className={styles.submitButton}
+            onClick={sendEmail}
+          >
             {loading ? (
               <Watch
                 height={20}
@@ -167,7 +237,12 @@ const Login = () => {
                 }}
               />
             ) : (
-              "Войти"
+              <span>
+                Получить код повторно
+                {countdown > 0 && (
+                  <span style={{ marginLeft: "5px" }}>{formatTime(countdown)}</span>
+                )}
+              </span>
             )}
           </button>
           {/* <button className={styles.qrButton}>
@@ -202,7 +277,7 @@ const Login = () => {
         <button type="submit" className={styles.submitButton}>
           Login
         </button> */}
-        </form>
+        </div>
         <p
           style={{
             width: "360px",
@@ -218,18 +293,18 @@ const Login = () => {
           согласие на обработку <span style={{ color: "#0cdd79" }}>Персональных данных</span>
         </p>
       </div>
-      <div className={styles.loginFooter} style={{ display: "none" }}>
+      <div className={styles.loginFooter}>
         <div onClick={toggleTheme}>
           <img src="/img/night-day.png" alt="night-day" />
         </div>
         <ul className={styles.footerUl}>
           <li>Қазақша</li>
           <li>Написать в поддержку</li>
-          <li>© 2024, Tapgame</li>
+          <li> 2024, Tapgame</li>
         </ul>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Code;

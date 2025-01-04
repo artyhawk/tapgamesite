@@ -1,13 +1,19 @@
 import styles from "./Header.module.css";
+import { useState } from "react";
 // import classNames from "classnames";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const [token, setToken] = useState(
+    localStorage.getItem("token") ? localStorage.getItem("token") : ""
+  );
   return (
     <header className={styles.header}>
       <div className={styles.container}>
         <nav className={styles.nav}>
           <div className={styles.nav__menu_left_wrapper}>
-            <div className={styles.nav__logo}>
+            <div className={styles.nav__logo} onClick={() => navigate("/")}>
               <img style={{ width: "81px" }} src="/img/logo.svg" alt="logo" />
             </div>
             <ul className={styles.nav__menu_left}>
@@ -34,7 +40,24 @@ const Header = () => {
                 alt="interface"
               />
             </li>
-            <li style={{ marginRight: "16px" }}>Войти</li>
+            {token ? (
+              <li
+                onClick={() => {
+                  localStorage.removeItem("token");
+                  setToken("");
+                }}
+                style={{ marginRight: "16px", cursor: "pointer" }}
+              >
+                Выйти
+              </li>
+            ) : (
+              <li
+                onClick={() => navigate("/auth")}
+                style={{ marginRight: "16px", cursor: "pointer" }}
+              >
+                Войти
+              </li>
+            )}
             <li>
               <img
                 className={styles.icon}

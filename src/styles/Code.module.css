@@ -171,7 +171,7 @@
   border-radius: 22px;
   border: 1px solid #eaedf6;
   padding: 11px 13px 11px 65px;
-  font-size: 16.83px;
+  font-size: 20.83px;
   display: flex;
   height: 50px;
   outline-color: #58e8a3;
@@ -202,4 +202,14 @@
 
 .footerUl li:last-child {
   margin-right: 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }
