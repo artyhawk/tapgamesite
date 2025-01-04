@@ -293,7 +293,7 @@ const Code = () => {
           согласие на обработку <span style={{ color: "#0cdd79" }}>Персональных данных</span>
         </p>
       </div>
-      <div className={styles.loginFooter}>
+      <div className={styles.loginFooter} style={{ display: "none" }}>
         <div onClick={toggleTheme}>
           <img src="/img/night-day.png" alt="night-day" />
         </div>
