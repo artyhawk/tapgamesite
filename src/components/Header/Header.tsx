@@ -73,7 +73,7 @@ const Header = () => {
           <div>
             <img src="/img/burger-menu.png" alt="burger" />
           </div>
-          <div className={styles.nav__logo}>
+          <div className={styles.nav__logo} onClick={() => navigate("/")}>
             <img style={{ width: "59px" }} src="/img/logo-white.svg" alt="logo" />
           </div>
           <ul className={styles.nav__menu_right}>
@@ -101,10 +101,21 @@ const Header = () => {
                 alt="translate"
               />
             </li>
-
-            <li>
-              <img className={styles.icon} src="/img/user-white.png" alt="user" />
-            </li>
+            {token ? (
+              <li
+                onClick={() => {
+                  localStorage.removeItem("token");
+                  setToken("");
+                }}
+                style={{ cursor: "pointer" }}
+              >
+                Выйти
+              </li>
+            ) : (
+              <li onClick={() => navigate("/auth")}>
+                <img className={styles.icon} src="/img/user-white.png" alt="user" />
+              </li>
+            )}
           </ul>
         </nav>
       </div>
