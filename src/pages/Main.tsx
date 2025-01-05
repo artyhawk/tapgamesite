@@ -18,7 +18,10 @@ const Main = () => {
             </p>
           </div>
           <div className={styles.hero__sports}>
-            <button className={classNames(styles.sports_btn, styles.sports_btn_active)}>
+            <button
+              className={classNames(styles.sports_btn, styles.sports_btn_active)}
+              style={{ display: "none" }}
+            >
               <img src="/img/basketball.svg" alt="basketball" />
               Баскетбол
             </button>
