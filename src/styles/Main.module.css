@@ -104,9 +104,11 @@
 .tournament__img {
   width: 100%;
   max-width: 233px; /* Примерная ширина — меняйте под себя */
-  height: auto;
+  max-height: 200px;
   display: block;
+
   border-radius: 8px;
+  margin-right: 10px;
   object-fit: cover; /* Если используете фиксированные пропорции для img */
 }
 
@@ -451,6 +453,12 @@
     padding: 1rem; /* Поменьше отступов */
   }
 }
+
+/* @media screen and (min-width: 800px) {
+  .tournament__img {
+    height: 200px;
+  }
+} */
 
 @media screen and (max-width: 568px) {
   .tournament_wrapper {

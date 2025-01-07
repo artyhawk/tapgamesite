@@ -56,7 +56,7 @@ const Main = () => {
                 </div>
                 <div className={styles["tournament__banner"]}>
                   <img
-                    src="/img/basketball-banner.png"
+                    src="/img/volley2.webp"
                     alt="Basketball Tournament Banner"
                     className={styles["tournament__img"]}
                   />
