@@ -157,14 +157,18 @@ const Main = () => {
               <div className={styles["news__header"]}>
                 <div className={styles.tournament__icon__text}>
                   <div className={styles.trophy_box}>
-                    <img src="/img/megaphone-news.png" alt="news" />
+                    <img src="/img/megaphone-ultra.png" alt="news" />
                   </div>
                   Новости
                 </div>
                 <div className={styles["news__btn-all"]}>
                   Все новости Tapgame
                   <div style={{ marginLeft: "16px" }}>
-                    <img src="/img/arrow-right.png" alt="arrow-right" />
+                    <img
+                      style={{ width: "11px", height: "9px" }}
+                      src="/img/next-white.png"
+                      alt="arrow-right"
+                    />
                   </div>
                 </div>
               </div>

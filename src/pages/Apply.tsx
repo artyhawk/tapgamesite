@@ -38,6 +38,7 @@ const Apply = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [photoPreview, setPhotoPreview] = useState<string>("/img/user-auth.png");
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -105,7 +106,7 @@ const Apply = () => {
         throw new Error("Ошибка при отправке формы");
       }
 
-      navigate("/success");
+      return handleSuccess();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Произошла ошибка");
     } finally {
@@ -113,6 +114,12 @@ const Apply = () => {
     }
   };
 
+  const handleSuccess = () => {
+    setSuccess(true);
+    setTimeout(() => {
+      navigate("/");
+    }, 5000);
+  };
   return (
     <div className={styles.wrapper}>
       <Header />
@@ -328,23 +335,37 @@ const Apply = () => {
               </div>
 
               {/* Кнопка отправки */}
-              <button type="submit" className={styles["submit-button"]} disabled={loading}>
-                {loading ? (
-                  <Watch
-                    height={20}
-                    width={20}
-                    color="#fff"
-                    visible={true}
-                    wrapperStyle={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center"
-                    }}
-                  />
-                ) : (
-                  "Отправить"
-                )}
-              </button>
+              {success ? (
+                <div className={styles["success-button"]}>
+                  <div style={{ marginRight: "15px" }}>
+                    <img
+                      style={{ width: "20px", height: "20px" }}
+                      src="/img/check-circle.png"
+                      alt="check-circle"
+                    />
+                  </div>
+                  Ваша заявка отправлена
+                </div>
+              ) : (
+                <button type="submit" className={styles["submit-button"]} disabled={loading}>
+                  {loading ? (
+                    <Watch
+                      height={20}
+                      width={20}
+                      color="#fff"
+                      visible={true}
+                      wrapperStyle={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center"
+                      }}
+                    />
+                  ) : (
+                    "Отправить"
+                  )}
+                </button>
+              )}
+
               {error && <div className={styles.error}>{error}</div>}
             </form>
           </div>

@@ -177,11 +177,10 @@ const Code = () => {
           </div> */}
           <div className={styles.phoneInputWrapper}>
             <img
-              src="/img/email-leter.svg"
+              src="/img/envelope-open.png"
               alt="device"
               style={{
-                width: "25px",
-                height: "25px",
+                width: "20px",
                 marginRight: "13px",
                 position: "absolute",
                 top: "15px",
