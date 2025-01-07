@@ -63,14 +63,19 @@ const Main = () => {
                   <div className={styles["tournament__info"]}>
                     <div className={styles["tournament__title-wrapper"]}>
                       <div className={styles["tournament__img-big"]}>
-                        <img src="/img/basketball3.png" />
+                        <img
+                          src="/img/beach-volleyball.png"
+                          style={{ width: "32px", height: "32px" }}
+                          alt="volleyball"
+                        />
                       </div>
-                      <h2 className={styles["tournament__title"]}>3x3 Basket 2024/2025</h2>
+                      <h2 className={styles["tournament__title"]}>Volleyball 2025</h2>
                     </div>
                     <p className={styles["tournament__description"]}>
-                      Присоединяйтесь к главному баскетбольному турниру года! Динамичный дизайн с
-                      главными фишками в ярких оттенках синего и оранжевого стимулирует энергию и
-                      страсть к игре.
+                      Приглашаем всех любителей волейбола на турнир, где встретятся лучшие команды,
+                      чтобы доказать свою силу и мастерство. В этом соревновании важна не только
+                      физическая подготовка, но и командная работа, страсть к победе и дух
+                      спортивного братства.
                     </p>
                     <div className={styles["tournament__btn-wrapper"]}>
                       <div
@@ -124,6 +129,18 @@ const Main = () => {
                 <div className={styles["tournament__upcoming"]}>
                   <ul className={styles["tournament__list"]}>
                     <li className={styles["tournament__item"]}>
+                      <img
+                        src="/img/beach-volleyball.png"
+                        style={{ width: "32px", height: "32px" }}
+                      />
+                      <div>
+                        <div className={styles["tournament__item-title"]}>Volleyball 2025</div>
+                        <div className={styles["tournament__item-date"]}>
+                          15 янв. - 21 фев. 2025 года
+                        </div>
+                      </div>
+                    </li>
+                    {/* <li className={styles["tournament__item"]}>
                       <img src="/img/basketball3.png" />
                       <div>
                         <div className={styles["tournament__item-title"]}>3х3 Basket 2024/2025</div>
@@ -131,16 +148,7 @@ const Main = () => {
                           15 янв. - 21 фев. 2025 года
                         </div>
                       </div>
-                    </li>
-                    <li className={styles["tournament__item"]}>
-                      <img src="/img/basketball3.png" />
-                      <div>
-                        <div className={styles["tournament__item-title"]}>3х3 Basket 2024/2025</div>
-                        <div className={styles["tournament__item-date"]}>
-                          15 янв. - 21 фев. 2025 года
-                        </div>
-                      </div>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
               </div>
@@ -154,7 +162,7 @@ const Main = () => {
                   Новости
                 </div>
                 <div className={styles["news__btn-all"]}>
-                  Все новости компании
+                  Все новости Tapgame
                   <div style={{ marginLeft: "16px" }}>
                     <img src="/img/arrow-right.png" alt="arrow-right" />
                   </div>
@@ -163,16 +171,16 @@ const Main = () => {
               <div className={styles["news__items"]}>
                 <div className={styles["news__item"]}>
                   <div className={styles["news__item-img"]}>
-                    <img src="/img/news1.png" alt="news1" />
+                    <img src="/img/voley-img.webp" alt="news1" />
                   </div>
                   <div className={styles["news__item-info"]}>
                     <div className={styles["news__item-title"]}>
-                      Большая игра: Баскетбольный турнир года стартует уже в эти выходные!
+                      Большая игра: Турнир по волейболу стартует уже через несколько дней!
                     </div>
                     <div className={styles["news__item-date"]}>15 янв 2025</div>
                   </div>
                 </div>
-                <div className={styles["news__item"]}>
+                {/* <div className={styles["news__item"]}>
                   <div className={styles["news__item-img"]}>
                     <img src="/img/news1.png" alt="news1" />
                   </div>
@@ -182,8 +190,8 @@ const Main = () => {
                     </div>
                     <div className={styles["news__item-date"]}>15 янв 2025</div>
                   </div>
-                </div>
-                <div className={styles["news__item"]}>
+                </div> */}
+                {/* <div className={styles["news__item"]}>
                   <div className={styles["news__item-img"]}>
                     <img src="/img/news1.png" alt="news1" />
                   </div>
@@ -193,8 +201,8 @@ const Main = () => {
                     </div>
                     <div className={styles["news__item-date"]}>15 янв 2025</div>
                   </div>
-                </div>
-                <div className={styles["news__item"]}>
+                </div> */}
+                {/* <div className={styles["news__item"]}>
                   <div className={styles["news__item-img"]}>
                     <img src="/img/news1.png" alt="news1" />
                   </div>
@@ -204,7 +212,7 @@ const Main = () => {
                     </div>
                     <div className={styles["news__item-date"]}>15 янв 2025</div>
                   </div>
-                </div>
+                </div> */}
               </div>
               <div className={styles["download__tapgame"]}>
                 <div className={styles["qr__image"]}>
