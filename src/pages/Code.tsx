@@ -117,17 +117,17 @@ const Code = () => {
         <div className={styles.loginForm}>
           <div className={styles.loginHeader}>
             <div className={styles.arrowBack} onClick={() => navigate("/auth")}>
-              <img src="/img/back.png" alt="back" />
+              <img style={{ width: "21px" }} src="/img/back.svg" alt="back" />
             </div>
             <h1 style={{ opacity: "0" }} className={styles.loginH1}>
               Tapgame
             </h1>
           </div>
-          <p style={{ textAlign: "center", fontSize: "20.83px" }}>
+          <p style={{ textAlign: "center", fontSize: "20.83px", marginBottom: "20px" }}>
             Подтвердите с помощью кода, отправленного на ваш email
           </p>
           <p></p>
-          <div className={styles.messengerBlock}>
+          <div className={styles.messengerBlock} style={{ display: "none" }}>
             {/* <div className={styles.messengerItem}>
               <div style={{ marginRight: "8px" }}>
                 <img src="/img/whatsapp.png" alt="whatsapp" />

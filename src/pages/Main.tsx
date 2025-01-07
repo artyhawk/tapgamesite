@@ -25,8 +25,8 @@ const Main = () => {
               <img src="/img/basketball.svg" alt="basketball" />
               Баскетбол
             </button>
-            <button className={styles.sports_btn}>
-              <img src="/img/volleyball.png" alt="volleyball" />
+            <button className={classNames(styles.sports_btn, styles.sports_btn_active)}>
+              <img src="/img/game.svg" alt="volleyball" />
               Волейбол
             </button>
             <button className={styles.sports_btn} style={{ display: "none" }}>
@@ -43,12 +43,12 @@ const Main = () => {
                 >
                   <div className={styles.tournament__icon__text}>
                     <div className={styles.trophy_box}>
-                      <img src="/img/trophy1.png" alt="trophy" />
+                      <img src="/img/trophy.png" alt="trophy" />
                     </div>
                     Турниры
                   </div>
                   <div className={styles.tournament__subscribe}>
-                    <div>
+                    <div style={{ width: "13px", height: "13px", marginRight: "5px" }}>
                       <img src="/img/notification.png" alt="notification" />
                     </div>
                     Подписаться
@@ -88,13 +88,17 @@ const Main = () => {
                       </div>
                       <div className={styles["tournament__links-wrapper"]}>
                         <div className={styles["tournament__info-link"]}>
-                          <img src="/img/info.png" alt="info" />
+                          <img
+                            src="/img/info.png"
+                            alt="info"
+                            style={{ width: "8px", height: "16px" }}
+                          />
                         </div>
                         <div className={styles["tournament__info-link"]}>
-                          <img src="/img/whatsapp.png" alt="WhatsApp" />
+                          <img src="/img/whatsapp.png" alt="WhatsApp" style={{ width: "16px" }} />
                         </div>
                         <div className={styles["tournament__info-link"]}>
-                          <img src="/img/instagram.png" alt="Instagram" />
+                          <img src="/img/instagram.png" alt="Instagram" style={{ width: "16px" }} />
                         </div>
                       </div>
                     </div>
@@ -112,9 +116,9 @@ const Main = () => {
                 >
                   <div className={styles.tournament__icon__text}>
                     <div className={styles.trophy_box}>
-                      <img src="/img/flash.png" alt="flash" />
+                      <img src="/img/flash.svg" alt="flash" />
                     </div>
-                    Ближайшие турниры
+                    Ближайшие турнирыx
                   </div>
                 </div>
                 <div className={styles["tournament__upcoming"]}>
@@ -212,10 +216,18 @@ const Main = () => {
                   </div>
                   <div style={{ display: "flex" }}>
                     <div style={{ marginRight: "6px" }}>
-                      <img src="/img/ios.png" alt="ios" />
+                      <img
+                        src="/img/game2.svg"
+                        alt="ios"
+                        style={{ width: "25px", height: "25px" }}
+                      />
                     </div>
                     <div>
-                      <img src="/img/android.png" alt="android" />
+                      <img
+                        style={{ width: "25px", height: "25px" }}
+                        src="/img/android.svg"
+                        alt="android"
+                      />
                     </div>
                   </div>
                 </div>
@@ -237,7 +249,11 @@ const Main = () => {
             <div style={{ display: "flex", alignItems: "center" }}>
               <div className={styles.patners__title}>Нам доверяют:</div>
               <div>
-                <img src="/img/freedom.png" alt="freedom" />
+                <img
+                  src="/img/freedom.png"
+                  alt="freedom"
+                  style={{ width: "80px", height: "24px" }}
+                />
               </div>
             </div>
             <div className={styles.patners__subtitle_button}>Станьте нашим клиентом</div>

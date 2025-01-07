@@ -76,7 +76,7 @@ const Login = () => {
               onClick={() => navigate("/")}
               style={{ cursor: "pointer" }}
             >
-              <img src="/img/back.png" alt="back" />
+              <img style={{ width: "21px" }} src="/img/back.svg" alt="back" />
             </div>
             <h1 className={styles.loginH1}>Tapgame</h1>
           </div>
@@ -130,11 +130,10 @@ const Login = () => {
           </div> */}
           <div className={styles.phoneInputWrapper}>
             <img
-              src="/img/email-leter.svg"
+              src="/img/envelope-open.png"
               alt="device"
               style={{
-                width: "25px",
-                height: "25px",
+                width: "20px",
                 marginRight: "13px",
                 position: "absolute",
                 top: "15px",

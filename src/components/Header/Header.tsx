@@ -14,13 +14,13 @@ const Header = () => {
         <nav className={styles.nav}>
           <div className={styles.nav__menu_left_wrapper}>
             <div className={styles.nav__logo} onClick={() => navigate("/")}>
-              <img style={{ width: "81px" }} src="/img/logo.svg" alt="logo" />
+              <img style={{ width: "75px" }} src="/img/logo.svg" alt="logo" />
             </div>
             <ul className={styles.nav__menu_left}>
               <li>Турниры</li>
-              <li>Спорт</li>
-              <li>О нас</li>
-              <li> Проекты</li>
+              {/* <li>Спорт</li> */}
+              {/* <li>О нас</li> */}
+              {/* <li> Проекты</li> */}
             </ul>
           </div>
           <ul className={styles.nav__menu_right}>

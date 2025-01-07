@@ -37,7 +37,7 @@ const Apply = () => {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [photoPreview, setPhotoPreview] = useState<string>("/img/user-photo.png");
+  const [photoPreview, setPhotoPreview] = useState<string>("/img/user-auth.png");
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -136,7 +136,10 @@ const Apply = () => {
             <p className={styles["form-description"]}>
               Пожалуйста, указывайте только достоверные данные при подаче заявки. Это важно для
               корректного учета вашей статистики и рейтинга, а также для создания справедливых
-              условий участия в турнире.
+              условий участия в турнире. <br></br>
+              <br></br>
+              Обязательные поля для заполнения указаны{" "}
+              <span className={styles["required"]}>* </span>
             </p>
 
             <form onSubmit={handleSubmit} className={styles["form-content"]}>
@@ -150,7 +153,11 @@ const Apply = () => {
                   }}
                 >
                   <div className={styles["photo-download"]}>
-                    <img src={photoPreview} alt="user" style={{ borderRadius: "26px" }} />
+                    <img
+                      src={photoPreview}
+                      alt="user"
+                      style={{ borderRadius: "26px", width: "24px", height: "24px" }}
+                    />
                   </div>
                   <input
                     type="file"
@@ -166,7 +173,7 @@ const Apply = () => {
                     className={styles["photo-label"]}
                     style={{ marginLeft: "9px", marginBottom: "0px" }}
                   >
-                    Загрузите фото
+                    Загрузите фото <span className={styles["required"]}>*</span>
                   </label>
                 </div>
               </div>
@@ -179,7 +186,7 @@ const Apply = () => {
               {/* Имя */}
               <div className={styles["form-group"]}>
                 <label htmlFor="firstName">
-                  Имя <span className={styles["required"]}>*</span>
+                  Имя <span className={styles["required"]}>* </span>
                 </label>
                 <input
                   type="text"
