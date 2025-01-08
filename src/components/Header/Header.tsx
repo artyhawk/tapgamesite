@@ -45,6 +45,7 @@ const Header = () => {
                 onClick={() => {
                   localStorage.removeItem("token");
                   setToken("");
+                  navigate("/");
                 }}
                 style={{ marginRight: "16px", cursor: "pointer" }}
               >
@@ -106,6 +107,7 @@ const Header = () => {
                 onClick={() => {
                   localStorage.removeItem("token");
                   setToken("");
+                  navigate("/");
                 }}
                 style={{ cursor: "pointer" }}
               >
