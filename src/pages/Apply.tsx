@@ -32,7 +32,7 @@ const Apply = () => {
     gender: "",
     birthDate: "",
     photo: null,
-    tournamentInfo: "3x3 Basket 2024/2025"
+    tournamentInfo: "Volleyball 2025"
   });
 
   const [loading, setLoading] = useState(false);
