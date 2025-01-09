@@ -219,7 +219,7 @@ const Main = () => {
                     <div className={styles.trophy_box}>
                       <img src="/img/flash.svg" alt="flash" />
                     </div>
-                    Ближайшие турнирыx
+                    Ближайшие турниры
                   </div>
                 </div>
                 <div className={styles["tournament__upcoming"]}>
