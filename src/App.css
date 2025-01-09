@@ -27,6 +27,25 @@ img {
   max-width: 100%;
 }
 
+/* TransitionCSS */
+/* Когда элемент появляется (enter) */
+.fade-enter {
+  opacity: 0; /* изначально полностью прозрачный */
+}
+.fade-enter.fade-enter-active {
+  opacity: 1; /* конечное состояние — полностью видимый */
+  transition: opacity 300ms ease; /* сама анимация за 300ms */
+}
+
+/* Когда элемент уходит (exit) */
+.fade-exit {
+  opacity: 1; /* стартуем из видимого состояния */
+}
+.fade-exit.fade-exit-active {
+  opacity: 0; /* уходим в прозрачность 0 */
+  transition: opacity 300ms ease;
+}
+
 /* #root {
   max-width: 1280px;
   margin: 0 auto;

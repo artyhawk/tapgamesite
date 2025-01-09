@@ -14,7 +14,7 @@ const Footer = () => {
               <div className={styles["footer__text"]}>
                 По любым вопросам обращайтесь на наш email:
               </div>
-              <div className={styles["footer__email"]}>mailbox@tapgegame.kz</div>
+              <div className={styles["footer__email"]}>mailbox@tapgame.kz</div>
             </div>
           </div>
           <div>

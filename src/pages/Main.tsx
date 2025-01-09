@@ -1,3 +1,5 @@
+import { CSSTransition, SwitchTransition } from "react-transition-group";
+import { useState } from "react";
 import { Header, Footer } from "../components";
 import styles from "../styles/Main.module.css";
 import { useNavigate } from "react-router-dom";
@@ -5,6 +7,7 @@ import classNames from "classnames";
 
 const Main = () => {
   const navigate = useNavigate();
+  const [tab, setTab] = useState("basketball");
   return (
     <div className={styles.wrapper}>
       <Header />
@@ -19,13 +22,20 @@ const Main = () => {
           </div>
           <div className={styles.hero__sports}>
             <button
-              className={classNames(styles.sports_btn, styles.sports_btn_active)}
-              style={{ display: "none" }}
+              className={classNames(styles.sports_btn, {
+                [styles.sports_btn_active]: tab === "basketball"
+              })}
+              onClick={() => setTab("basketball")}
             >
               <img src="/img/basketball.svg" alt="basketball" />
               Баскетбол
             </button>
-            <button className={classNames(styles.sports_btn, styles.sports_btn_active)}>
+            <button
+              className={classNames(styles.sports_btn, {
+                [styles.sports_btn_active]: tab === "volleyball"
+              })}
+              onClick={() => setTab("volleyball")}
+            >
               <img src="/img/game.svg" alt="volleyball" />
               Волейбол
             </button>
@@ -54,61 +64,147 @@ const Main = () => {
                     Подписаться
                   </div>
                 </div>
-                <div className={styles["tournament__banner"]}>
-                  <img
-                    src="/img/volley2.webp"
-                    alt="Basketball Tournament Banner"
-                    className={styles["tournament__img"]}
-                  />
-                  <div className={styles["tournament__info"]}>
-                    <div className={styles["tournament__title-wrapper"]}>
-                      <div className={styles["tournament__img-big"]}>
+                <SwitchTransition>
+                  <CSSTransition
+                    key={tab} // ключ, по которому React будет понимать, что "контент" меняется
+                    timeout={300} // длительность анимации (в мс)
+                    classNames="fade" // корень имён классов анимации (см. ниже в CSS)
+                    unmountOnExit // чтобы старый блок удалялся из DOM по окончании анимации
+                  >
+                    {tab === "basketball" ? (
+                      <div className={styles["tournament__banner"]}>
                         <img
-                          src="/img/beach-volleyball.png"
-                          style={{ width: "32px", height: "32px" }}
-                          alt="volleyball"
+                          src="/img/basket.jpg"
+                          alt="Basketball Tournament Banner"
+                          className={styles["tournament__img"]}
                         />
-                      </div>
-                      <h2 className={styles["tournament__title"]}>Volleyball 2025</h2>
-                    </div>
-                    <p className={styles["tournament__description"]}>
-                      Приглашаем всех любителей волейбола на турнир, где встретятся лучшие команды,
-                      чтобы доказать свою силу и мастерство. В этом соревновании важна не только
-                      физическая подготовка, но и командная работа, страсть к победе и дух
-                      спортивного братства.
-                    </p>
-                    <div className={styles["tournament__btn-wrapper"]}>
-                      <div
-                        className={styles["tournament__btn"]}
-                        style={{ cursor: "pointer" }}
-                        onClick={() => {
-                          if (localStorage.getItem("token")) {
-                            navigate("apply");
-                          } else {
-                            navigate("auth");
-                          }
-                        }}
-                      >
-                        Участвовать
-                      </div>
-                      <div className={styles["tournament__links-wrapper"]}>
-                        <div className={styles["tournament__info-link"]}>
-                          <img
-                            src="/img/info.png"
-                            alt="info"
-                            style={{ width: "8px", height: "16px" }}
-                          />
+                        <div className={styles["tournament__info"]}>
+                          <div className={styles["tournament__title-wrapper"]}>
+                            <div className={styles["tournament__img-big"]}>
+                              <img
+                                src="/img/beach-volleyball.png"
+                                style={{ width: "32px", height: "32px" }}
+                                alt="volleyball"
+                              />
+                            </div>
+                            <h2 className={styles["tournament__title"]}>JUMP 5x5 SHYMKENT</h2>
+                          </div>
+                          <p className={styles["tournament__description"]}>
+                            Ты готов почувствовать настоящий ритм баскетбола? Тогда твое место на
+                            площадке JUMP 5x5 SHYMKENT! Это не просто турнир – это битва амбиций,
+                            силы и командного духа!
+                          </p>
+                          <div className={styles["tournament__btn-wrapper"]}>
+                            <div
+                              className={styles["tournament__btn"]}
+                              style={{ cursor: "pointer" }}
+                              onClick={() => {
+                                const tournamentTitle =
+                                  tab === "basketball" ? "JUMP 5x5 SHYMKENT" : "TAPGO CUP SHYMKENT";
+
+                                if (localStorage.getItem("token")) {
+                                  navigate("apply", { state: { tournamentInfo: tournamentTitle } });
+                                } else {
+                                  navigate("auth");
+                                }
+                              }}
+                            >
+                              Участвовать
+                            </div>
+                            <div className={styles["tournament__links-wrapper"]}>
+                              <div className={styles["tournament__info-link"]}>
+                                <img
+                                  src="/img/info.png"
+                                  alt="info"
+                                  style={{ width: "8px", height: "16px" }}
+                                />
+                              </div>
+                              <div className={styles["tournament__info-link"]}>
+                                <img
+                                  src="/img/whatsapp.png"
+                                  alt="WhatsApp"
+                                  style={{ width: "16px" }}
+                                />
+                              </div>
+                              <div className={styles["tournament__info-link"]}>
+                                <img
+                                  src="/img/instagram.png"
+                                  alt="Instagram"
+                                  style={{ width: "16px" }}
+                                />
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                        <div className={styles["tournament__info-link"]}>
-                          <img src="/img/whatsapp.png" alt="WhatsApp" style={{ width: "16px" }} />
-                        </div>
-                        <div className={styles["tournament__info-link"]}>
-                          <img src="/img/instagram.png" alt="Instagram" style={{ width: "16px" }} />
+                      </div>
+                    ) : (
+                      <div className={styles["tournament__banner"]}>
+                        <img
+                          src="/img/voleyball.jpg"
+                          alt="Basketball Tournament Banner"
+                          className={styles["tournament__img"]}
+                        />
+                        <div className={styles["tournament__info"]}>
+                          <div className={styles["tournament__title-wrapper"]}>
+                            <div className={styles["tournament__img-big"]}>
+                              <img
+                                src="/img/beach-volleyball.png"
+                                style={{ width: "32px", height: "32px" }}
+                                alt="volleyball"
+                              />
+                            </div>
+                            <h2 className={styles["tournament__title"]}>TAPGO CUP SHYMKENT</h2>
+                          </div>
+                          <p className={styles["tournament__description"]}>
+                            Пришло время выйти на площадку, где встречаются лучшие! Участвуй в
+                            молодежном турнире по волейболу TAPGO CUP SHYMKENT – стань частью
+                            захватывающей борьбы, энергии и настоящего командного духа!
+                          </p>
+                          <div className={styles["tournament__btn-wrapper"]}>
+                            <div
+                              className={styles["tournament__btn"]}
+                              style={{ cursor: "pointer" }}
+                              onClick={() => {
+                                const tournamentTitle =
+                                  tab === "basketball" ? "JUMP 5x5 SHYMKENT" : "TAPGO CUP SHYMKENT";
+                                if (localStorage.getItem("token")) {
+                                  navigate("apply", { state: { tournamentInfo: tournamentTitle } });
+                                } else {
+                                  navigate("auth");
+                                }
+                              }}
+                            >
+                              Участвовать
+                            </div>
+                            <div className={styles["tournament__links-wrapper"]}>
+                              <div className={styles["tournament__info-link"]}>
+                                <img
+                                  src="/img/info.png"
+                                  alt="info"
+                                  style={{ width: "8px", height: "16px" }}
+                                />
+                              </div>
+                              <div className={styles["tournament__info-link"]}>
+                                <img
+                                  src="/img/whatsapp.png"
+                                  alt="WhatsApp"
+                                  style={{ width: "16px" }}
+                                />
+                              </div>
+                              <div className={styles["tournament__info-link"]}>
+                                <img
+                                  src="/img/instagram.png"
+                                  alt="Instagram"
+                                  style={{ width: "16px" }}
+                                />
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
+                    )}
+                  </CSSTransition>
+                </SwitchTransition>
               </div>
               {/* Блок с ближайшими турнирами */}
               <div style={{ minWidth: "244px" }} className={styles.tournamet_wrapper_upcoming}>
@@ -129,26 +225,26 @@ const Main = () => {
                 <div className={styles["tournament__upcoming"]}>
                   <ul className={styles["tournament__list"]}>
                     <li className={styles["tournament__item"]}>
-                      <img
-                        src="/img/beach-volleyball.png"
-                        style={{ width: "32px", height: "32px" }}
-                      />
+                      <img src="/img/basketball.svg" style={{ width: "32px", height: "32px" }} />
                       <div>
-                        <div className={styles["tournament__item-title"]}>Volleyball 2025</div>
+                        <div className={styles["tournament__item-title"]}>JUMP 5x5 SHYMKENT</div>
                         <div className={styles["tournament__item-date"]}>
                           15 янв. - 21 фев. 2025 года
                         </div>
                       </div>
                     </li>
-                    {/* <li className={styles["tournament__item"]}>
-                      <img src="/img/basketball3.png" />
+                    <li className={styles["tournament__item"]}>
+                      <img
+                        src="/img/beach-volleyball.png"
+                        style={{ width: "32px", height: "32px" }}
+                      />
                       <div>
-                        <div className={styles["tournament__item-title"]}>3х3 Basket 2024/2025</div>
+                        <div className={styles["tournament__item-title"]}>TAPGO CUP SHYMKENT</div>
                         <div className={styles["tournament__item-date"]}>
                           15 янв. - 21 фев. 2025 года
                         </div>
                       </div>
-                    </li> */}
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -184,9 +280,9 @@ const Main = () => {
                     <div className={styles["news__item-date"]}>15 янв 2025</div>
                   </div>
                 </div>
-                {/* <div className={styles["news__item"]}>
+                <div className={styles["news__item"]}>
                   <div className={styles["news__item-img"]}>
-                    <img src="/img/news1.png" alt="news1" />
+                    <img src="/img/basketball.webp" alt="news1" />
                   </div>
                   <div className={styles["news__item-info"]}>
                     <div className={styles["news__item-title"]}>
@@ -194,7 +290,7 @@ const Main = () => {
                     </div>
                     <div className={styles["news__item-date"]}>15 янв 2025</div>
                   </div>
-                </div> */}
+                </div>
                 {/* <div className={styles["news__item"]}>
                   <div className={styles["news__item-img"]}>
                     <img src="/img/news1.png" alt="news1" />

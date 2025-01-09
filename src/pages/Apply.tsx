@@ -1,7 +1,7 @@
 import { Header, Footer } from "../components";
 import { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import styles from "../styles/Apply.module.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import uri from "../utils/uri";
 import { Watch } from "react-loader-spinner";
 
@@ -17,10 +17,20 @@ interface IFormData {
   birthDate: string;
   photo: File | null;
   tournamentInfo: string;
+  captain: string;
+  teamName: string;
 }
 
 const Apply = () => {
   const navigate = useNavigate();
+  const { state } = useLocation();
+
+  useEffect(() => {
+    if (!state?.tournamentInfo) {
+      navigate("/");
+    }
+  }, [state, navigate]);
+
   const [formData, setFormData] = useState<IFormData>({
     firstName: "",
     lastName: "",
@@ -32,7 +42,9 @@ const Apply = () => {
     gender: "",
     birthDate: "",
     photo: null,
-    tournamentInfo: "Volleyball 2025"
+    tournamentInfo: state?.tournamentInfo || "",
+    captain: "",
+    teamName: ""
   });
 
   const [loading, setLoading] = useState(false);
@@ -332,6 +344,39 @@ const Apply = () => {
                   value={formData.email}
                   onChange={handleChange}
                 />
+              </div>
+              {/* Team Name */}
+              <div className={styles["form-group"]}>
+                <label htmlFor="teamName">
+                  Название команды <span className={styles["required"]}>*</span>
+                </label>
+                <input
+                  type="text"
+                  id="teamName"
+                  name="teamName"
+                  placeholder="Укажите название команды"
+                  required
+                  value={formData.teamName}
+                  onChange={handleChange}
+                />
+              </div>
+
+              {/* Captain */}
+              <div className={styles["form-group"]}>
+                <label htmlFor="gender">
+                  Капитан команды <span className={styles["required"]}>*</span>
+                </label>
+                <select
+                  id="captain"
+                  name="captain"
+                  required
+                  value={formData.captain}
+                  onChange={handleChange}
+                >
+                  <option value="">Являетесь ли вы капитаном команды?</option>
+                  <option value="yes">Да</option>
+                  <option value="no">Нет</option>
+                </select>
               </div>
 
               {/* Кнопка отправки */}
