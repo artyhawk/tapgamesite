@@ -21,7 +21,7 @@ export const allRoutes = [
     path: "/dashboard",
     exact: true,
     element: <Dashobard />,
-    access: "public"
+    access: "private"
   },
   {
     path: "/",

@@ -44,6 +44,9 @@ const Header = () => {
               <li
                 onClick={() => {
                   localStorage.removeItem("token");
+                  if (localStorage.getItem("role")) {
+                    localStorage.removeItem("role");
+                  }
                   setToken("");
                   navigate("/");
                 }}

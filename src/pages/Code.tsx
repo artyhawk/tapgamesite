@@ -98,7 +98,13 @@ const Code = () => {
 
       if (data.token) {
         localStorage.setItem("token", data.token);
-        navigate("/");
+        if (data.role === "user") {
+          navigate("/");
+        }
+        if (data.role === "admin") {
+          localStorage.setItem("role", "admin");
+          navigate("/dashboard");
+        }
       }
     } catch (error) {
       console.error("Registration error:", error);

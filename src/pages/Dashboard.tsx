@@ -3,6 +3,7 @@ import styles from "../styles/Dashboard.module.css";
 import { ModalParticipant } from "../components"; // Предположим, вы экспортируете его так
 import Pagination from "../components/Pagination/Pagination";
 import uri from "../utils/uri";
+import { useNavigate } from "react-router-dom";
 
 // 1. Интерфейс для элемента (заявки) из API
 interface IApply {
@@ -27,6 +28,13 @@ const Dashboard: React.FC = () => {
   const [selectedApply, setSelectedApply] = useState<IApply | null>(null);
   // Данные с сервера (заявки)
   const [applies, setApplies] = useState<IApply[]>([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("role") !== "admin") {
+      navigate("/");
+    }
+  }, []);
 
   // Параметры пагинации
   const [rowsPerPage, setRowsPerPage] = useState(30);
