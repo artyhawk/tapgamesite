@@ -21,6 +21,8 @@ interface IApply {
   tournamentInfo: string;
   userId: string;
   createdAt: string;
+  captain: string;
+  teamName: string;
 }
 
 const Dashboard: React.FC = () => {
@@ -188,8 +190,10 @@ const Dashboard: React.FC = () => {
             <tr>
               <th>Фото</th>
               <th>Пользователь</th>
-              <th>ID</th>
-              <th>Ограничения</th>
+              {/* <th>ID</th> */}
+              <th>Название команды</th>
+              <th>Капитан</th>
+              {/* <th>Ограничения</th> */}
               <th>Игр</th>
               <th>Телефон</th>
               <th>Дата</th>
@@ -213,10 +217,12 @@ const Dashboard: React.FC = () => {
                     </small>
                   </div>
                 </td>
-                <td>{apply._id}</td>
-                <td className={`${styles.status} ${styles.locked}`}>
+                {/* <td>{apply._id}</td> */}
+                <td>{apply.teamName}</td>
+                <td>{apply.captain === "yes" ? "Да" : "Нет"}</td>
+                {/* <td className={`${styles.status} ${styles.locked}`}>
                   <span>Нет</span>
-                </td>
+                </td> */}
                 <td>0</td>
                 <td className={styles.phone}>{apply.phone}</td>
                 <td className={styles.date}>

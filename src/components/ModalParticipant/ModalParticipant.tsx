@@ -18,6 +18,8 @@ interface IApply {
   tournamentInfo: string;
   userId: string;
   createdAt: string;
+  captain: string;
+  teamName: string;
 }
 
 interface ModalParticipantProps {
@@ -72,11 +74,25 @@ const ModalParticipant: React.FC<ModalParticipantProps> = ({ onClose, data }) =>
             <li>
               <strong>Дата рождения:</strong> {new Date(data.birthDate).toLocaleDateString("ru-RU")}
             </li>
+            <li>
+              <strong>Капитан команды:</strong> {data.captain === "yes" ? "Да" : "Нет"}
+            </li>
+            <li>
+              <strong>Название команды:</strong> {data.teamName}
+            </li>
           </ul>
         </div>
 
         {/* Кнопка WhatsApp или что-то ещё */}
-        <button className={styles.whatsappButton}>Написать в WhatsApp</button>
+        <button
+          onClick={() => {
+            const phoneNumber = data.phone.replace(/\D/g, ""); // Remove non-digits
+            window.open(`https://wa.me/${phoneNumber}`, "_blank");
+          }}
+          className={styles.whatsappButton}
+        >
+          Написать в WhatsApp
+        </button>
       </div>
     </div>
   );
