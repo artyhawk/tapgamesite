@@ -114,6 +114,12 @@ const Apply = () => {
         body: formDataToSend
       });
 
+      const json = await response.json();
+
+      if (json.message === "You have already applied for this tournament") {
+        throw new Error("Вы уже подали заявку на этот турнир");
+      }
+
       if (!response.ok) {
         throw new Error("Ошибка при отправке формы");
       }
