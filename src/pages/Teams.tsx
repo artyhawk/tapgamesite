@@ -1,27 +1,9 @@
 import { Header, Footer } from "../components";
 import styles from "../styles/Teams.module.css";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-
-interface PlayerData {
-  id: number;
-  tournament_team: {
-    name: string;
-    team: {
-      city: {
-        name: string;
-      };
-    };
-  };
-  team_user: {
-    user: {
-      first_name: string;
-      last_name: string;
-    };
-    number: string;
-  };
-}
+import { useParams, useNavigate } from "react-router-dom";
+import { fetchWithCors } from "../utils/api";
+import type { PlayerData } from "../types/api";
 
 const Teams = () => {
   const { tournamentId } = useParams();
@@ -33,13 +15,7 @@ const Teams = () => {
   useEffect(() => {
     const fetchPlayers = async () => {
       try {
-        const response = await fetch(
-          `https://mtgame.ru/api/v1/tournament_team/${tournamentId}/users/`
-        );
-        if (!response.ok) {
-          throw new Error("Failed to fetch players");
-        }
-        const data = await response.json();
+        const data = await fetchWithCors<PlayerData[]>(`/tournament_team/${tournamentId}/users/`);
         setPlayers(Array.isArray(data) ? data : []);
       } catch (err) {
         setError(err instanceof Error ? err.message : "An error occurred");

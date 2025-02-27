@@ -2,40 +2,28 @@ import { Header, Footer } from "../components";
 import styles from "../styles/TournamentInfo.module.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
-interface TeamData {
-  id: number;
-  team: {
-    id: number;
-    name: string;
-    city: {
-      name: string;
-    };
-    logo: string;
-  };
-  games_count: number;
-  won_games_count: number;
-  lose_games_count: number;
-  won_games_percent: number;
-  plus_minus: string;
-}
+import { fetchWithCors } from "../utils/api";
+import type { TournamentTeamStats } from "../types/api";
 
 const TournamentInfo = () => {
-  const [teams, setTeams] = useState<TeamData[]>([]);
+  const [teams, setTeams] = useState<TournamentTeamStats[]>([]);
   const navigate = useNavigate();
+  const tournamentId = 2070;
+
   useEffect(() => {
     const fetchTeams = async () => {
       try {
-        const response = await fetch("https://mtgame.ru/api/v1/tournament/2070/teams/");
-        const data = await response.json();
+        const data = await fetchWithCors<TournamentTeamStats[]>(`/tournament/${tournamentId}/teams/`);
         setTeams(data);
       } catch (error) {
         console.error("Error fetching teams:", error);
       }
     };
 
-    fetchTeams();
-  }, []);
+    if (tournamentId) {
+      fetchTeams();
+    }
+  }, [tournamentId]);
 
   return (
     <div className={styles.wrapper}>
