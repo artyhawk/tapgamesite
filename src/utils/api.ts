@@ -1,4 +1,4 @@
-const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
+const CORS_PROXY = 'https://corsproxy.io/?';
 const API_BASE_URL = 'https://mtgame.ru/api/v1';
 
 interface ApiError extends Error {
