@@ -217,7 +217,6 @@ const Dashboard: React.FC = () => {
                     </small>
                   </div>
                 </td>
-                {/* <td>{apply._id}</td> */}
                 <td>{apply.teamName}</td>
                 <td>{apply.captain === "yes" ? "Да" : "Нет"}</td>
                 {/* <td className={`${styles.status} ${styles.locked}`}>

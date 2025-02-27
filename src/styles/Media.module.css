@@ -1,0 +1,603 @@
+.container {
+  max-width: 1326px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.wrapper {
+  width: 100%;
+  background-color: #0e0d12;
+}
+
+.container_main {
+  margin: 0 auto;
+  max-width: 1033px;
+  width: 100%;
+}
+
+/* Обёртка всего */
+.wrapper {
+  width: 100%;
+  background-color: #0e0d12; /* фон, как на макете */
+}
+
+.main {
+  padding: 0 20px;
+}
+
+/* Верхняя полоса с кнопкой */
+.topBar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 16px 0;
+}
+
+/* Кнопка "Принять заявку" */
+.applyButton {
+  background-color: #18b170;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+/* Название и вкладки */
+.titleAndTabs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+/* Заголовок страницы (Tapgo cup) */
+.pageTitle {
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
+
+/* Навигация по вкладкам */
+.tabs ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 24px;
+  border-bottom: 1px solid #202026;
+}
+
+.tabs li {
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding-bottom: 20px;
+}
+
+.tabs li:hover {
+  color: #09b261 !important;
+  border-bottom: 1px solid #09b261;
+  transition: all 0.3s ease;
+}
+
+/* Активная вкладка */
+.activeTab {
+  color: #09b261 !important;
+  border-bottom: 1px solid #09b261;
+}
+
+/* Блок с "Команд 11", "Игровые 11" и т.п. */
+.statsSection {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.statsItem {
+  background-color: #1b1a21;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+
+.statsLabel {
+  display: block;
+  font-size: 14px;
+  color: #8c8a95;
+  margin-bottom: 8px;
+}
+
+.statsValue {
+  font-size: 20px;
+  color: #fff;
+  font-weight: 500;
+}
+
+/* Основной контейнер (у вас уже есть .container_main) */
+.container_main {
+  margin: 0 auto;
+  max-width: 1033px;
+  width: 100%;
+}
+
+/* Общее расположение: левая колонка с таблицами + правая колонка (aside) */
+.mainContent {
+  display: flex;
+  gap: 30px;
+}
+
+/* Левая колонка */
+.leftColumn {
+  flex: 1;
+}
+
+/* Шапка "Турнирная таблица" + кнопки "Общий зачет", "Группы" */
+.tableHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.tournamentTableTitle {
+  color: #fff;
+  font-size: 20px;
+  margin: 0;
+}
+
+.tableTabs {
+  margin: 0;
+  padding: 0;
+}
+
+.tableTabs select {
+  padding: 6px 12px;
+  background-color: #292732;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  min-width: 132px;
+  min-height: 42px;
+}
+
+.activeTabButton {
+  background-color: #18b170;
+}
+
+/* Общая таблица */
+.tournamentTable {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #1b1a21; /* общий цвет фона таблицы */
+  margin-bottom: 30px;
+}
+
+.tournamentTable thead {
+  background-color: #292732;
+}
+
+.tournamentTable th {
+  text-align: left;
+  padding: 12px;
+  color: #aaa;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.tournamentTable td {
+  padding: 12px;
+  color: #fff;
+  border-top: 1px solid #2e2c37;
+}
+
+/* Можно сделать чередование строк: */
+.tournamentTable tbody tr:nth-child(odd) {
+  background-color: #202026;
+}
+
+.tournamentTable tbody tr:nth-child(even) {
+  background-color: #1b1b20;
+}
+
+/* Заголовок "Группа A" */
+.groupTitle {
+  margin: 20px 0 10px 0;
+  font-size: 18px;
+  color: #fff;
+}
+
+/* Правая колонка */
+.sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebarBanner {
+  width: 100%;
+  height: auto;
+  max-height: 238px;
+  display: block;
+  background: #333;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Блок "О турнире" */
+.aboutCard {
+  background-color: #1b1a21;
+  border-radius: 8px;
+  padding: 16px;
+  color: #fff;
+}
+
+.aboutCard p {
+  margin: 6px 0;
+}
+
+.aboutCard strong {
+  color: #ffffff;
+}
+
+.tournamentInfoP {
+  font-size: 10px;
+  color: #808088;
+  margin: 20px 0;
+}
+
+.timeQuarter {
+  background-color: #1a231a;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  color: #90ec5f;
+  font-size: 11px;
+  border-radius: 4px;
+  margin-bottom: 25px;
+}
+
+.tournamentName {
+  display: flex;
+  color: #fff;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.tournamentNameGradient {
+  background-image: linear-gradient(to right, #222327, #425d39);
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.tournamentNameContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.submit-button {
+  grid-column: 1 / -1; /* или grid-column: span 2; если у вас 2 колонки */
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  background-color: #60f113;
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 700;
+  min-width: 200px;
+  transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #4cd40f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(96, 241, 19, 0.2);
+}
+
+.statisticsTitle {
+  font-size: 12.5px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.statisticsContainer {
+  background: #1f1f24;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.statisticsRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.statisticsItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.statisticsIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  color: #9f9ea8;
+  font-size: 10.42px;
+}
+
+.statisticsIcon img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.statisticsValue {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.statisticsLabel {
+  color: #8a8a8e;
+  font-size: 12px;
+}
+
+/* На мобильных делаем 1 колонку */
+/* @media (max-width: 600px) {
+ 
+} */
+
+/* Левая колонка, в которой лежит таблица */
+.leftColumn {
+  flex: 1;
+  min-width: 0; /* Ключевой момент, чтобы таблица не выталкивала колонку */
+}
+
+/* Обёртка таблицы */
+.tableWrapper {
+  width: 100%;
+  overflow-x: auto;
+  background: #1f1f24;
+  -webkit-overflow-scrolling: touch; /* Для плавного скролла на iOS */
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Сама таблица: можно задать min-width, чтобы не сжималась слишком сильно */
+.statsTable {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  background-color: #1b1a21;
+  margin-bottom: 30px;
+  border: none;
+}
+
+.statsTable thead {
+  background-color: #292732;
+  border-bottom: 1px solid #3d3d44;
+}
+
+.statsTable th,
+.statsTable td {
+  border: none;
+  padding: 12px;
+}
+
+.statsTable td {
+  text-align: center;
+}
+
+.statsTable th {
+  text-align: left;
+  color: #aaa;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.statsTable td {
+  color: #fff;
+}
+
+.statsTable tbody tr:nth-child(odd) {
+  background-color: #202026;
+}
+
+.statsTable tbody tr:nth-child(even) {
+  background-color: #1b1b20;
+}
+
+.statsTable tbody tr:hover {
+  background-color: inherit;
+}
+
+.statsTable th:first-child {
+  width: 40px;
+}
+
+.statsTable th:nth-child(2) {
+  width: 200px;
+}
+
+.statsTable th:not(:first-child):not(:nth-child(2)) {
+  width: 100px;
+}
+
+.statsTable th {
+  background: #1f1f24;
+  padding: 15px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 9.5px;
+  color: #9f9ea8;
+  /* border-bottom: 1px solid #292732; */
+  white-space: nowrap;
+}
+
+.statsTable td {
+  padding: 12px 15px;
+  font-size: 14px;
+  /* border-bottom: 1px solid #292732; */
+  white-space: nowrap;
+}
+
+.playerCell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.playerCell img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.playerName {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.playerTeam {
+  color: #9f9ea8;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.scoreCell {
+  color: #09b261;
+  font-weight: 600;
+}
+
+.headSepTitle {
+  background-color: #355929;
+  color: #fff;
+  padding: 13px;
+  font-size: 12.5px;
+  font-weight: 700;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+/* Search wrapper */
+.searchWrapper {
+  display: flex;
+  margin-bottom: 14px;
+  align-items: center;
+  gap: 16px;
+}
+
+.searchInputContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.searchInputContainer input {
+  width: 100%;
+  padding: 12px 16px 12px 40px;
+  background: #1b1a21;
+  border: 1px solid #292732;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  height: 42px;
+}
+
+.searchInputContainer input::placeholder {
+  color: #8c8a95;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.filterWrapper {
+  display: flex;
+  font-size: 12.5px;
+  color: #fff;
+  align-items: center;
+  font-weight: 700;
+}
+
+.selectBox {
+  background-color: #202025;
+  padding: 18px 10px;
+}
+
+.filterTabs select {
+  padding: 6px 12px;
+  background-color: #292732;
+  color: #fff;
+  border: 1px solid #3d3d44;
+  border-radius: 4px;
+  width: 100%;
+  cursor: pointer;
+  min-height: 42.16px;
+  border-radius: 8px;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.socialIcon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #292732;
+}
+
+.socialIcon img {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
+.mediaContainer {
+  background-color: #292732;
+  width: 100%;
+  min-height: 370px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
