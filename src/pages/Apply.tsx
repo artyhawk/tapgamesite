@@ -116,6 +116,12 @@ const Apply = () => {
 
       const json = await response.json();
 
+      // if (response.status === 201) {
+      //   localStorage.removeItem("token");
+      //   navigate("/");
+      //   return;
+      // }
+
       if (json.message === "You have already applied for this tournament") {
         throw new Error("Вы уже подали заявку на этот турнир");
       }

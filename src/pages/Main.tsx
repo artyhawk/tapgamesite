@@ -100,7 +100,9 @@ const Main = () => {
                               style={{ cursor: "pointer" }}
                               onClick={() => {
                                 const tournamentTitle =
-                                  tab === "basketball" ? "JUMP 5x5 SHYMKENT" : "TAPGO CUP SHYMKENT";
+                                  tab === "basketball"
+                                    ? "JUMP 5x5 SHYMKENT"
+                                    : "ПРК - Первенство РК среди частных волейбольных школ.";
 
                                 if (localStorage.getItem("token")) {
                                   navigate("apply", { state: { tournamentInfo: tournamentTitle } });
@@ -153,12 +155,14 @@ const Main = () => {
                                 alt="volleyball"
                               />
                             </div>
-                            <h2 className={styles["tournament__title"]}>TAPGO CUP SHYMKENT</h2>
+                            <h2 className={styles["tournament__title"]}>
+                              ПРК - Первенство РК среди частных волейбольных школ.
+                            </h2>
                           </div>
                           <p className={styles["tournament__description"]}>
                             Пришло время выйти на площадку, где встречаются лучшие! Участвуй в
-                            молодежном турнире по волейболу TAPGO CUP SHYMKENT – стань частью
-                            захватывающей борьбы, энергии и настоящего командного духа!
+                            молодежном турнире по волейболу ПРК – стань частью захватывающей борьбы,
+                            энергии и настоящего командного духа!
                           </p>
                           <div className={styles["tournament__btn-wrapper"]}>
                             <div
@@ -166,7 +170,9 @@ const Main = () => {
                               style={{ cursor: "pointer" }}
                               onClick={() => {
                                 const tournamentTitle =
-                                  tab === "basketball" ? "JUMP 5x5 SHYMKENT" : "TAPGO CUP SHYMKENT";
+                                  tab === "basketball"
+                                    ? "JUMP 5x5 SHYMKENT"
+                                    : "ПРК - Первенство РК среди частных волейбольных школ.";
                                 if (localStorage.getItem("token")) {
                                   navigate("apply", { state: { tournamentInfo: tournamentTitle } });
                                 } else {
@@ -225,21 +231,21 @@ const Main = () => {
                 <div className={styles["tournament__upcoming"]}>
                   <ul className={styles["tournament__list"]}>
                     <li className={styles["tournament__item"]}>
-                      <img src="/img/basketball.svg" style={{ width: "32px", height: "32px" }} />
-                      <div>
-                        <div className={styles["tournament__item-title"]}>JUMP 5x5 SHYMKENT</div>
-                        <div className={styles["tournament__item-date"]}>
-                          15 янв. - 21 фев. 2025 года
-                        </div>
-                      </div>
-                    </li>
-                    <li className={styles["tournament__item"]}>
                       <img
                         src="/img/beach-volleyball.png"
                         style={{ width: "32px", height: "32px" }}
                       />
                       <div>
-                        <div className={styles["tournament__item-title"]}>TAPGO CUP SHYMKENT</div>
+                        <div className={styles["tournament__item-title"]}>ПРК</div>
+                        <div className={styles["tournament__item-date"]}>
+                          22 мар. - 27 мар. 2025 года
+                        </div>
+                      </div>
+                    </li>
+                    <li className={styles["tournament__item"]}>
+                      <img src="/img/basketball.svg" style={{ width: "32px", height: "32px" }} />
+                      <div>
+                        <div className={styles["tournament__item-title"]}>JUMP 5x5 SHYMKENT</div>
                         <div className={styles["tournament__item-date"]}>
                           15 янв. - 21 фев. 2025 года
                         </div>
