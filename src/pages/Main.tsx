@@ -142,7 +142,7 @@ const Main = () => {
                     ) : (
                       <div className={styles["tournament__banner"]}>
                         <img
-                          src="/img/voleyball.jpg"
+                          src="/img/image100.png"
                           alt="Basketball Tournament Banner"
                           className={styles["tournament__img"]}
                         />
